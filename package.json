@@ -2,17 +2,23 @@
 {
   "name": "react-native-paypal-wrapper",
   "version": "1.0.0",
-  "description": "",
+  "description": "React Native PayPal Wrapper for iOS and Android",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/taessina/react-native-paypal-wrapper.git"
   },
   "keywords": [
-    "react-native"
+    "react-native",
+    "paypal"
   ],
-  "author": "",
-  "license": "",
+  "author": "Yao Bin Then <alvin.then@taessina.com> (http://yaobinthen.com)",
+  "license": "MIT",
   "peerDependencies": {
     "react-native": "^0.29.0"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/taessina/react-native-paypal-wrapper/issues"
+  },
+  "homepage": "https://github.com/taessina/react-native-paypal-wrapper"
 }
