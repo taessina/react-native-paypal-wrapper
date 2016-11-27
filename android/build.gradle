@@ -19,7 +19,11 @@ android {
     }
 }
 
-dependencies {
-    compile 'com.facebook.react:react-native:0.20.+'
+repositories {
+    mavenCentral()
 }
-  
+
+dependencies {
+    compile 'com.facebook.react:react-native:+'
+    compile 'com.paypal.sdk:paypal-android-sdk:2.15.1'
+}

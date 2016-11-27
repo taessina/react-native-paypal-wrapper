@@ -15,7 +15,8 @@
   "author": "Yao Bin Then <alvin.then@taessina.com> (http://yaobinthen.com)",
   "license": "MIT",
   "peerDependencies": {
-    "react-native": "^0.29.0"
+    "react": ">=15.3.1",
+    "react-native": ">=0.35"
   },
   "bugs": {
     "url": "https://github.com/taessina/react-native-paypal-wrapper/issues"
