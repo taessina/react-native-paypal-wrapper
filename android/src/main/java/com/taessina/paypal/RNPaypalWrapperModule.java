@@ -2,7 +2,6 @@
 package com.taessina.paypal;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 
 import com.facebook.react.bridge.ActivityEventListener;
@@ -14,13 +13,11 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableMap;
 
-import com.paypal.android.sdk.payments.PayPalAuthorization;
 import com.paypal.android.sdk.payments.PayPalConfiguration;
 import com.paypal.android.sdk.payments.PayPalPayment;
 import com.paypal.android.sdk.payments.PayPalService;
 import com.paypal.android.sdk.payments.PaymentActivity;
 import com.paypal.android.sdk.payments.PaymentConfirmation;
-import com.paypal.android.sdk.payments.ShippingAddress;
 
 import java.util.Map;
 import java.util.HashMap;
@@ -35,8 +32,6 @@ public class RNPaypalWrapperModule extends ReactContextBaseJavaModule implements
   private static final String ERROR_INVALID_CONFIG = "INVALID_CONFIG";
 
   private Promise promise;
-  private Context context;
-  private Activity activity;
   private PayPalConfiguration config;
 
   private final ActivityEventListener mActivityEventListener = new BaseActivityEventListener() {
@@ -47,13 +42,15 @@ public class RNPaypalWrapperModule extends ReactContextBaseJavaModule implements
           if (resultCode == Activity.RESULT_OK) {
             PaymentConfirmation confirm = data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
             if (confirm != null) {
-              promise.resolve("test");
+              promise.resolve(confirm.toJSONObject().toString());
             }
           } else if (resultCode == Activity.RESULT_CANCELED) {
             promise.reject(ERROR_USER_CANCELLED, "User cancelled");
           } else if (resultCode == PaymentActivity.RESULT_EXTRAS_INVALID) {
             promise.reject(ERROR_INVALID_CONFIG, "Invalid config");
           }
+
+          promise = null;
         }
       }
     }
@@ -85,14 +82,11 @@ public class RNPaypalWrapperModule extends ReactContextBaseJavaModule implements
 
   @ReactMethod
   public void initialize(String environment, String clientId) {
-    this.activity = getCurrentActivity();
-    this.context = this.activity.getBaseContext();
-
     config = new PayPalConfiguration().environment(environment).clientId(clientId);
 
-    Intent intent = new Intent(this.activity, PayPalService.class);
+    Intent intent = new Intent(reactContext, PayPalService.class);
     intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, config);
-    this.activity.startService(intent);
+    reactContext.startService(intent);
   }
 
   @ReactMethod
@@ -112,17 +106,17 @@ public class RNPaypalWrapperModule extends ReactContextBaseJavaModule implements
 
     payment.enablePayPalShippingAddressesRetrieval(true);
 
-    Intent intent = new Intent(this.context, PaymentActivity.class);
+    Intent intent = new Intent(reactContext, PaymentActivity.class);
 
     // send the same configuration for restart resiliency
     intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, config);
     intent.putExtra(PaymentActivity.EXTRA_PAYMENT, payment);
-    this.activity.startActivityForResult(intent, PAYPAL_REQUEST);
+    getCurrentActivity().startActivityForResult(intent, PAYPAL_REQUEST);
   }
 
   @Override
   public void onHostDestroy() {
-    activity.stopService(new Intent(activity, PayPalService.class));
+    reactContext.stopService(new Intent(reactContext, PayPalService.class));
   }
 
   @Override

@@ -25,5 +25,7 @@ repositories {
 
 dependencies {
     compile 'com.facebook.react:react-native:+'
-    compile 'com.paypal.sdk:paypal-android-sdk:2.15.1'
+    compile ('com.paypal.sdk:paypal-android-sdk:2.15.1') {
+        exclude group: 'io.card'
+    }
 }
