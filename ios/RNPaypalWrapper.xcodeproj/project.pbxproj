@@ -8,6 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		B3E7B58A1CC2AC0600A0062D /* RNPaypalWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RNPaypalWrapper.m */; };
+		B4D190EA1DED57C100DE2918 /* libPayPalMobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B4D190E21DED57C100DE2918 /* libPayPalMobile.a */; };
+		B4D190F51DED586200DE2918 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4D190EC1DED586200DE2918 /* Accelerate.framework */; };
+		B4D190F61DED586200DE2918 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4D190ED1DED586200DE2918 /* AudioToolbox.framework */; };
+		B4D190F71DED586200DE2918 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4D190EE1DED586200DE2918 /* AVFoundation.framework */; };
+		B4D190F81DED586200DE2918 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4D190EF1DED586200DE2918 /* CoreLocation.framework */; };
+		B4D190F91DED586200DE2918 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4D190F01DED586200DE2918 /* CoreMedia.framework */; };
+		B4D190FA1DED586200DE2918 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4D190F11DED586200DE2918 /* MessageUI.framework */; };
+		B4D190FB1DED586200DE2918 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4D190F21DED586200DE2918 /* MobileCoreServices.framework */; };
+		B4D190FC1DED586200DE2918 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4D190F31DED586200DE2918 /* SafariServices.framework */; };
+		B4D190FD1DED586200DE2918 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4D190F41DED586200DE2918 /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,6 +36,23 @@
 		134814201AA4EA6300B7C361 /* libRNPaypalWrapper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNPaypalWrapper.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3E7B5881CC2AC0600A0062D /* RNPaypalWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNPaypalWrapper.h; sourceTree = "<group>"; };
 		B3E7B5891CC2AC0600A0062D /* RNPaypalWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNPaypalWrapper.m; sourceTree = "<group>"; };
+		B4D190E21DED57C100DE2918 /* libPayPalMobile.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPayPalMobile.a; sourceTree = "<group>"; };
+		B4D190E31DED57C100DE2918 /* PayPalConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalConfiguration.h; sourceTree = "<group>"; };
+		B4D190E41DED57C100DE2918 /* PayPalFuturePaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalFuturePaymentViewController.h; sourceTree = "<group>"; };
+		B4D190E51DED57C100DE2918 /* PayPalMobile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalMobile.h; sourceTree = "<group>"; };
+		B4D190E61DED57C100DE2918 /* PayPalOAuthScopes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalOAuthScopes.h; sourceTree = "<group>"; };
+		B4D190E71DED57C100DE2918 /* PayPalPayment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalPayment.h; sourceTree = "<group>"; };
+		B4D190E81DED57C100DE2918 /* PayPalPaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalPaymentViewController.h; sourceTree = "<group>"; };
+		B4D190E91DED57C100DE2918 /* PayPalProfileSharingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalProfileSharingViewController.h; sourceTree = "<group>"; };
+		B4D190EC1DED586200DE2918 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		B4D190ED1DED586200DE2918 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		B4D190EE1DED586200DE2918 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		B4D190EF1DED586200DE2918 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		B4D190F01DED586200DE2918 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		B4D190F11DED586200DE2918 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		B4D190F21DED586200DE2918 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		B4D190F31DED586200DE2918 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
+		B4D190F41DED586200DE2918 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +60,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4D190F51DED586200DE2918 /* Accelerate.framework in Frameworks */,
+				B4D190F61DED586200DE2918 /* AudioToolbox.framework in Frameworks */,
+				B4D190F71DED586200DE2918 /* AVFoundation.framework in Frameworks */,
+				B4D190F81DED586200DE2918 /* CoreLocation.framework in Frameworks */,
+				B4D190F91DED586200DE2918 /* CoreMedia.framework in Frameworks */,
+				B4D190FA1DED586200DE2918 /* MessageUI.framework in Frameworks */,
+				B4D190FB1DED586200DE2918 /* MobileCoreServices.framework in Frameworks */,
+				B4D190FC1DED586200DE2918 /* SafariServices.framework in Frameworks */,
+				B4D190FD1DED586200DE2918 /* SystemConfiguration.framework in Frameworks */,
+				B4D190EA1DED57C100DE2918 /* libPayPalMobile.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,10 +87,43 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
+				B4D190E11DED57C100DE2918 /* PayPalMobile */,
 				B3E7B5881CC2AC0600A0062D /* RNPaypalWrapper.h */,
 				B3E7B5891CC2AC0600A0062D /* RNPaypalWrapper.m */,
 				134814211AA4EA7D00B7C361 /* Products */,
+				B4D190EB1DED586200DE2918 /* Frameworks */,
 			);
+			sourceTree = "<group>";
+		};
+		B4D190E11DED57C100DE2918 /* PayPalMobile */ = {
+			isa = PBXGroup;
+			children = (
+				B4D190E21DED57C100DE2918 /* libPayPalMobile.a */,
+				B4D190E31DED57C100DE2918 /* PayPalConfiguration.h */,
+				B4D190E41DED57C100DE2918 /* PayPalFuturePaymentViewController.h */,
+				B4D190E51DED57C100DE2918 /* PayPalMobile.h */,
+				B4D190E61DED57C100DE2918 /* PayPalOAuthScopes.h */,
+				B4D190E71DED57C100DE2918 /* PayPalPayment.h */,
+				B4D190E81DED57C100DE2918 /* PayPalPaymentViewController.h */,
+				B4D190E91DED57C100DE2918 /* PayPalProfileSharingViewController.h */,
+			);
+			path = PayPalMobile;
+			sourceTree = "<group>";
+		};
+		B4D190EB1DED586200DE2918 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B4D190EC1DED586200DE2918 /* Accelerate.framework */,
+				B4D190ED1DED586200DE2918 /* AudioToolbox.framework */,
+				B4D190EE1DED586200DE2918 /* AVFoundation.framework */,
+				B4D190EF1DED586200DE2918 /* CoreLocation.framework */,
+				B4D190F01DED586200DE2918 /* CoreMedia.framework */,
+				B4D190F11DED586200DE2918 /* MessageUI.framework */,
+				B4D190F21DED586200DE2918 /* MobileCoreServices.framework */,
+				B4D190F31DED586200DE2918 /* SafariServices.framework */,
+				B4D190F41DED586200DE2918 /* SystemConfiguration.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,13 +267,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				HEADER_SEARCH_PATHS = (
-				"$(inherited)",
+					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../../../React/**",
 					"$(SRCROOT)/../../react-native/React/**",
 				);
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				OTHER_LDFLAGS = "-ObjC";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/PayPalMobile",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lc++",
+					"-ObjC",
+				);
 				PRODUCT_NAME = RNPaypalWrapper;
 				SKIP_INSTALL = YES;
 			};
@@ -218,8 +295,15 @@
 					"$(SRCROOT)/../../../React/**",
 					"$(SRCROOT)/../../react-native/React/**",
 				);
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				OTHER_LDFLAGS = "-ObjC";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/PayPalMobile",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lc++",
+					"-ObjC",
+				);
 				PRODUCT_NAME = RNPaypalWrapper;
 				SKIP_INSTALL = YES;
 			};
