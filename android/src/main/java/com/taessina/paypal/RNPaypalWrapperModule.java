@@ -3,8 +3,10 @@ package com.taessina.paypal;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 
 import com.facebook.react.bridge.ActivityEventListener;
+import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.BaseActivityEventListener;
 import com.facebook.react.bridge.LifecycleEventListener;
 import com.facebook.react.bridge.Promise;
@@ -12,6 +14,9 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableMap;
+import com.facebook.react.bridge.WritableMap;
+
+import com.facebook.internal.BundleJSONConverter;
 
 import com.paypal.android.sdk.payments.PayPalConfiguration;
 import com.paypal.android.sdk.payments.PayPalPayment;
@@ -30,6 +35,7 @@ public class RNPaypalWrapperModule extends ReactContextBaseJavaModule implements
 
   private static final String ERROR_USER_CANCELLED = "USER_CANCELLED";
   private static final String ERROR_INVALID_CONFIG = "INVALID_CONFIG";
+  private static final String ERROR_INTERNAL_ERROR = "INTERNAL_ERROR";
 
   private Promise promise;
   private PayPalConfiguration config;
@@ -42,7 +48,14 @@ public class RNPaypalWrapperModule extends ReactContextBaseJavaModule implements
           if (resultCode == Activity.RESULT_OK) {
             PaymentConfirmation confirm = data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
             if (confirm != null) {
-              promise.resolve(confirm.toJSONObject().toString());
+              try {
+                BundleJSONConverter converter = new BundleJSONConverter();
+                Bundle bundle = converter.convertToBundle(confirm.toJSONObject());
+                WritableMap map = Arguments.fromBundle(bundle);
+                promise.resolve(map);
+              } catch (Exception e) {
+                promise.reject(ERROR_INTERNAL_ERROR, "Internal error");
+              }
             }
           } else if (resultCode == Activity.RESULT_CANCELED) {
             promise.reject(ERROR_USER_CANCELLED, "User cancelled");
