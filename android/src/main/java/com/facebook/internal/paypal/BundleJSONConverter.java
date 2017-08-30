@@ -18,7 +18,13 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.facebook.internal;
+/**
+ * This class moved one level because if we do not move it, it will prevent the android app to build 
+ * if in android app already using fbsdk.
+ * 
+ * So to prevent that, this file was moved
+ */
+package com.facebook.internal.paypal;
 
 import android.os.Bundle;
 import org.json.JSONArray;
