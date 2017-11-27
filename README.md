@@ -3,6 +3,8 @@
 
 React Native PayPal wrapper for iOS and Android
 
+**Note: No longer maintained, happy to accept PR or takeover**
+
 ## Getting started
 
 `$ yarn add react-native-paypal-wrapper`
