@@ -58,6 +58,16 @@ RCT_EXPORT_METHOD(initializeWithOptions:(NSString *) environment clientId:(NSStr
     }
 }
 
+RCT_EXPORT_METHOD(getClientMetadataId:(RCTPromiseResolveBlock)resolve
+                  rejecter:(RCTPromiseRejectBlock)reject)
+{
+    self.resolve = resolve;
+    self.reject = reject;
+
+    NSString *metadataID = [PayPalMobile clientMetadataID];
+    self.resolve(metadataID);
+}
+
 RCT_EXPORT_METHOD(obtainConsent:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject)
 {

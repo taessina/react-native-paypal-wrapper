@@ -185,6 +185,13 @@ public class RNPaypalWrapperModule extends ReactContextBaseJavaModule implements
     intentF.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, config);
     getCurrentActivity().startActivityForResult(intentF, REQUEST_CODE_FUTURE_PAYMENT);
   }
+  
+  @ReactMethod
+  public void getClientMetadataId(Promise promise) {
+    this.promise = promise;
+    String metadataId = PayPalConfiguration.getClientMetadataId(reactContext);
+    promise.resolve(metadataId);
+  }
 
   @Override
   public void onHostDestroy() {
