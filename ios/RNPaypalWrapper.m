@@ -36,6 +36,50 @@ RCT_EXPORT_METHOD(initialize:(NSString *) environment clientId:(NSString *)clien
     });
 }
 
+RCT_EXPORT_METHOD(initializeWithOptions:(NSString *) environment clientId:(NSString *)clientId options:(NSDictionary *)options)
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [PayPalMobile initializeWithClientIdsForEnvironments:@{environment : clientId}];
+        [PayPalMobile preconnectWithEnvironment:environment];
+    });
+
+    if([options objectForKey:@"merchantName"] != nil 
+        && [options objectForKey:@"merchantPrivacyPolicyUri"] != nil 
+        && [options objectForKey:@"merchantUserAgreementUri"] != nil ) {
+
+        NSString *merchantName = [RCTConvert NSString:options[@"merchantName"]];
+        NSString *merchantPrivacyPolicyUri = [RCTConvert NSString:options[@"merchantPrivacyPolicyUri"]];
+        NSString *merchantUserAgreementUri = [RCTConvert NSString:options[@"merchantUserAgreementUri"]];
+
+        self.configuration = [[PayPalConfiguration alloc] init];
+        self.configuration.merchantName = merchantName;
+        self.configuration.merchantPrivacyPolicyURL = [NSURL URLWithString:merchantPrivacyPolicyUri];
+        self.configuration.merchantUserAgreementURL = [NSURL URLWithString:merchantUserAgreementUri];
+    }
+}
+
+RCT_EXPORT_METHOD(obtainConsent:(RCTPromiseResolveBlock)resolve
+                  rejecter:(RCTPromiseRejectBlock)reject)
+{
+    self.resolve = resolve;
+    self.reject = reject;
+
+    PayPalFuturePaymentViewController *vc = [[PayPalFuturePaymentViewController alloc] initWithConfiguration:self.configuration delegate:self];
+
+    // Present the PayPalFuturePaymentViewController
+    UIViewController *visibleVC = [[[UIApplication sharedApplication] keyWindow] rootViewController];
+    do {
+        if ([visibleVC isKindOfClass:[UINavigationController class]]) {
+            visibleVC = [(UINavigationController *)visibleVC visibleViewController];
+        } else if (visibleVC.presentedViewController) {
+            visibleVC = visibleVC.presentedViewController;
+        }
+    } while (visibleVC.presentedViewController);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [visibleVC presentViewController:vc animated:YES completion:nil];
+    });
+}
+
 RCT_EXPORT_METHOD(pay:(NSDictionary *)options resolver:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject)
 {
@@ -92,6 +136,28 @@ RCT_EXPORT_METHOD(pay:(NSDictionary *)options resolver:(RCTPromiseResolveBlock)r
     [paymentViewController.presentingViewController dismissViewControllerAnimated:YES completion:^{
         if (self.resolve) {
             self.resolve(completedPayment.confirmation);
+        }
+    }];
+}
+
+#pragma mark - PayPalFuturePaymentDelegate methods
+
+- (void)payPalFuturePaymentDidCancel:(PayPalFuturePaymentViewController *)futurePaymentViewController {
+  // User cancelled login. Dismiss the PayPalLoginViewController, breathe deeply.
+    [futurePaymentViewController.presentingViewController dismissViewControllerAnimated:YES completion:^{
+        if (self.reject) {
+            NSError *error = [NSError errorWithDomain:RCTErrorDomain code:1 userInfo:NULL];
+            self.reject(USER_CANCELLED, USER_CANCELLED, error);
+        }
+    }];
+}
+
+- (void)payPalFuturePaymentViewController:(PayPalFuturePaymentViewController *)futurePaymentViewController
+                didAuthorizeFuturePayment:(NSDictionary *)futurePaymentAuthorization {
+    // Be sure to dismiss the PayPalLoginViewController.
+    [futurePaymentViewController.presentingViewController dismissViewControllerAnimated:YES completion:^{
+        if (self.resolve) {
+            self.resolve(futurePaymentAuthorization);
         }
     }];
 }

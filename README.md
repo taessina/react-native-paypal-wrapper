@@ -16,6 +16,8 @@ React Native PayPal wrapper for iOS and Android
 Extra steps for iOS 🙄 [see here](https://github.com/paypal/PayPal-ios-SDK#with-or-without-cocoapods)
 
 ## Usage
+
+### Payment
 ```javascript
 import PayPal from 'react-native-paypal-wrapper';
 
@@ -26,6 +28,24 @@ PayPal.pay({
   currency: 'MYR',
   description: 'Your description goes here',
 }).then(confirm => console.log(confirm))
+  .catch(error => console.log(error));
+```
+
+#### FuturePayment
+
+```javascript
+import PayPal from 'react-native-paypal-wrapper';
+
+// Required for Future Payments
+const options = {
+  merchantName : "Merchant name",
+  merchantPrivacyPolicyUri: "https://example.com/privacy",
+  merchantUserAgreementUri: "https://example.com/useragreement",
+}
+// 3 env available: NO_NETWORK, SANDBOX, PRODUCTION
+PayPal.initializeWithOptions(PayPal.NO_NETWORK, "<your-client-id>", options);
+
+PayPal.obtainConsent().then(authorization => console.log(authorization))
   .catch(error => console.log(error));
 ```
 
