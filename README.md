@@ -31,7 +31,7 @@ PayPal.pay({
   .catch(error => console.log(error));
 ```
 
-#### FuturePayment
+### FuturePayment
 
 ```javascript
 import PayPal from 'react-native-paypal-wrapper';
