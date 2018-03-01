@@ -33,7 +33,7 @@ import java.util.HashMap;
 import java.math.BigDecimal;
 
 public class RNPaypalWrapperModule extends ReactContextBaseJavaModule implements LifecycleEventListener {
-  private static final int PAYPAL_REQUEST = 467081;
+  private static final int PAYPAL_REQUEST = 65535;
   private static final int REQUEST_CODE_FUTURE_PAYMENT = 2;
 
   private final ReactApplicationContext reactContext;
