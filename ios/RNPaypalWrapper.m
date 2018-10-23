@@ -172,4 +172,8 @@ RCT_EXPORT_METHOD(pay:(NSDictionary *)options resolver:(RCTPromiseResolveBlock)r
     }];
 }
 
++ (BOOL)requiresMainQueueSetup {
+    return YES;
+}
+
 @end
