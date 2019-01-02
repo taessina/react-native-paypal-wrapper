@@ -1,9 +1,10 @@
+# Note: No longer maintained, happy to accept PR or takeover
+
+Or refer to this article https://medium.com/zestgeek/paypal-integration-in-react-native-9d447df4fce1
 
 # react-native-paypal-wrapper
 
 React Native PayPal wrapper for iOS and Android
-
-**Note: No longer maintained, happy to accept PR or takeover**
 
 ## Getting started
 
