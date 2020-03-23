@@ -1,3 +1,8 @@
+> This project is [now live on
+> Subspace](https://app.dev.subspace.net/gitlab/subspace-open-development/react-native-paypal-wrapper)!
+> Subspace is the open-development platform where projects are
+> maintained collectively through voting.
+
 # Note: No longer maintained, happy to accept PR or takeover
 
 Or refer to this article https://medium.com/zestgeek/paypal-integration-in-react-native-9d447df4fce1
